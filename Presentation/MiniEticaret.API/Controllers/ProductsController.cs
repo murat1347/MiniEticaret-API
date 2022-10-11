@@ -33,6 +33,8 @@ namespace MiniEticaret.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
+            //8.ders bitti
+
             var product = _productReadRepository.GetByIdAsync(id);
             return Ok(product);
         }
