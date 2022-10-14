@@ -4,6 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MiniEticaret.Persistence.Repositories;
 using MiniEticaret.Application.Repositories;
+using MiniEticaret.Persistence.Repositories.ProductImageFile.InvoiceFile;
+using MiniEticaret.Persistence.Repositories.InvoiceFile;
+using MiniEticaret.Persistence.Repositories.ProductImageFile;
+using ETicaretAPI.Persistence.Repositories;
+using MiniEticaret.Persistence.Repositories.File;
 
 namespace MiniEticaret.Persistence
 {
@@ -23,6 +28,12 @@ namespace MiniEticaret.Persistence
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<IFileReadRepository, FileReadRepository>();
+            services.AddScoped<IFileWriteRepository, FileWriteRepository>();
+            services.AddScoped<IProductImageFileReadRepository, ProductImageFileReadRepository>();
+            services.AddScoped<IProductImageFileWriteRepository, ProductImageFileWriteRepository>();
+            services.AddScoped<IInvoiceFileReadRepository, InvoiceFileReadRepository>();
+            services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
         }
 
     }

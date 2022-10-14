@@ -20,6 +20,10 @@
     <ProjectReference Include="..\..\Infrastructure\MiniEticaret.Persistence\MiniEticaret.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
