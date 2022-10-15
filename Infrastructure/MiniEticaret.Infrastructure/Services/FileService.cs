@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using MiniEticaret.Application.Services;
 using MiniEticaret.Infrastructure.Operations;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MiniEticaret.Infrastructure.Services
 {
-    public class FileService : IFileService
+    public class FileService 
     {
         readonly IWebHostEnvironment _webHostEnvironment;
         public FileService(IWebHostEnvironment webHostEnvironment)

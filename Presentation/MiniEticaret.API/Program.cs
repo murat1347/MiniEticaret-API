@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using MiniEticaret.Application.Validators.Products;
 using MiniEticaret.Infrastructure;
 using MiniEticaret.Infrastructure.Filters;
+using MiniEticaret.Infrastructure.Services.Local.LocalStorage;
 using MiniEticaret.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddPersistenceServices();
 var app = builder.Build();
