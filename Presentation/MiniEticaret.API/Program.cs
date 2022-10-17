@@ -9,7 +9,7 @@ using MiniEticaret.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddPersistenceServices();
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>())
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true); builder.Services.AddCors(opt=>opt.AddDefaultPolicy(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices();
 builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddInfrastructureServices();
-builder.Services.AddPersistenceServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,6 +1,4 @@
-﻿
-
-using MiniEticaret.Domain.Entities;
+﻿using MiniEticaret.Domain.Entities;
 using MiniEticaret.Persistence.Contexts;
 using MiniEticaret.Persistence.Repositories;
 
