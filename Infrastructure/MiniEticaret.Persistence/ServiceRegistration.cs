@@ -9,6 +9,7 @@ using MiniEticaret.Persistence.Repositories.InvoiceFile;
 using MiniEticaret.Persistence.Repositories.ProductImageFile;
 using ETicaretAPI.Persistence.Repositories;
 using MiniEticaret.Persistence.Repositories.File;
+using MiniEticaret.Domain.Entities.Identity;
 
 namespace MiniEticaret.Persistence
 {
@@ -21,6 +22,14 @@ namespace MiniEticaret.Persistence
             configurationManager.AddJsonFile("appsettings.json");
             services.AddDbContext<MiniEticaretAPIDBContext>(opt => opt.UseNpgsql(configurationManager.GetConnectionString("PosgreSQL")));
 
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            }).AddEntityFrameworkStores<MiniEticaretAPIDBContext>();
 
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();

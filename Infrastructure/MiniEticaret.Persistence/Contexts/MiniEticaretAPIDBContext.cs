@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MiniEticaret.Domain.Entities;
 using MiniEticaret.Domain.Entities.Common;
+using MiniEticaret.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MiniEticaret.Persistence.Contexts
 {
-    public class MiniEticaretAPIDBContext: DbContext
+    public class MiniEticaretAPIDBContext: IdentityDbContext<AppUser,AppRole,string>
     {
         public MiniEticaretAPIDBContext(DbContextOptions options ): base(options)
         {
