@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MiniEticaret.Application.Abstractions.Storage;
 using MiniEticaret.Application.Features.Commands.Product.CreateProduct;
@@ -22,6 +23,7 @@ namespace MiniEticaret.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class ProductsController : ControllerBase
     {
         readonly IMediator _mediator;

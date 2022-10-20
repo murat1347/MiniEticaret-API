@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MiniEticaret.Application.Abstractions.Storage;
+using MiniEticaret.Application.Abstractions.Token;
 using MiniEticaret.Infrastructure.Enums;
 using MiniEticaret.Infrastructure.Services;
 using MiniEticaret.Infrastructure.Services.Local.LocalStorage;
 using MiniEticaret.Infrastructure.Services.Local.Storage;
+using MiniEticaret.Infrastructure.Services.Token;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,7 @@ namespace MiniEticaret.Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IStorageService, StorageService>();
+            serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : class, IStorage
         {
