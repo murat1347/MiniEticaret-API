@@ -10,6 +10,10 @@ using MiniEticaret.Persistence.Repositories.ProductImageFile;
 using ETicaretAPI.Persistence.Repositories;
 using MiniEticaret.Persistence.Repositories.File;
 using MiniEticaret.Domain.Entities.Identity;
+using MiniEticaret.Application.Abstractions.Services;
+using MiniEticaret.Application.Abstractions.Services.Authentications;
+using MiniEticaret.Persistence.Services;
+using ETicaretAPI.Persistence.Services;
 
 namespace MiniEticaret.Persistence
 {
@@ -43,6 +47,10 @@ namespace MiniEticaret.Persistence
             services.AddScoped<IProductImageFileWriteRepository, ProductImageFileWriteRepository>();
             services.AddScoped<IInvoiceFileReadRepository, InvoiceFileReadRepository>();
             services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IExternalAuthentication, AuthService>();
+            services.AddScoped<IInternalAuthentication, AuthService>();
         }
 
     }

@@ -9,5 +9,6 @@ namespace MiniEticaret.Application.Abstractions.Token
     public interface ITokenHandler
     {
         Dtos.Token CreateAccessToken(int minute);
+        string CreateRefreshToken();
     }
 }
