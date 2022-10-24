@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MiniEticaret.Application.Abstractions.Token;
+using MiniEticaret.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,7 @@ namespace MiniEticaret.Infrastructure.Services.Token
         {
             _configuration = configuration;
         }
-        public Application.Dtos.Token CreateAccessToken(int second)
+        public Application.Dtos.Token CreateAccessToken(int second,AppUser user)
         {
             Application.Dtos.Token token = new();
             //Security Key'in simetriğini alıyoruz.
@@ -33,7 +35,8 @@ namespace MiniEticaret.Infrastructure.Services.Token
                 issuer: _configuration["Token:Issuer"],
                 expires: token.Expiration,
                 notBefore: DateTime.UtcNow,
-                signingCredentials: signingCredentials
+                signingCredentials: signingCredentials,
+                claims: new List<Claim> { new(ClaimTypes.Name, user.UserName) }
                 );
             //Token oluşturucu sınıfından bir örnek alalım.
             JwtSecurityTokenHandler tokenHandler = new();

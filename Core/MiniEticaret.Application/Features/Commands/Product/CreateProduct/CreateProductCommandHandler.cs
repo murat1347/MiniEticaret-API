@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MiniEticaret.Application.Abstractions.Hubs;
 using MiniEticaret.Application.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace MiniEticaret.Application.Features.Commands.Product.CreateProduct
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
         private readonly IProductWriteRepository _productWriteRepository;
-public CreateProductCommandHandler(IProductWriteRepository productWriteRepository)
+        private readonly IProductHubService _productHubService;
+        public CreateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductHubService productHubService)
         {
             _productWriteRepository = productWriteRepository;
+            _productHubService = productHubService;
         }
 
         public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
@@ -25,6 +28,8 @@ public CreateProductCommandHandler(IProductWriteRepository productWriteRepositor
                 Stock = request.VM_Create_Product.Stock
             });
             await _productWriteRepository.SaveChanges();
+
+            await _productHubService.ProductAddedMessageAsync($"{request.VM_Create_Product.Name} ProductAdded!")
             return new();
         }
     }

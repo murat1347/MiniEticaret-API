@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniEticaret.Domain.Entities.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MiniEticaret.Application.Abstractions.Token
 {
     public interface ITokenHandler
     {
-        Dtos.Token CreateAccessToken(int minute);
+        Dtos.Token CreateAccessToken(int minute, AppUser appUser);
         string CreateRefreshToken();
     }
 }
