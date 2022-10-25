@@ -30,7 +30,8 @@ namespace MiniEticaret.Application.Features.Queries.Product.GetAllProduct
                 p.Stock,
                 p.Price,
                 p.CreatedDate,
-                p.UpdatedDate
+                p.UpdatedDate,
+                p.ProductImageFiles
             }).ToList();
             return new()
             {

@@ -29,7 +29,7 @@ namespace MiniEticaret.Application.Features.Commands.Product.CreateProduct
             });
             await _productWriteRepository.SaveChanges();
 
-            await _productHubService.ProductAddedMessageAsync($"{request.VM_Create_Product.Name} ProductAdded!")
+            await _productHubService.ProductAddedMessageAsync($"{request.VM_Create_Product.Name} ProductAdded!");
             return new();
         }
     }
